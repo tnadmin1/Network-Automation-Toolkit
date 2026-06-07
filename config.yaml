@@ -1,0 +1,26 @@
+# ============================================================
+# config.yaml — Nornir configuration
+# ============================================================
+# This is the entry point Nornir reads when it starts up.
+# It tells Nornir:
+#   1. Which inventory plugin to use and where the inventory files live
+#   2. How to run tasks (the threading model for concurrency)
+# ============================================================
+
+inventory:
+  # SimpleInventory reads plain YAML files — the easiest inventory backend
+  # to start with. Later phases can swap this for a dynamic inventory
+  # (NetBox, Ansible, etc.) without changing your scripts.
+  plugin: SimpleInventory
+  options:
+    host_file: "inventory/hosts.yaml"
+    group_file: "inventory/groups.yaml"
+    defaults_file: "inventory/defaults.yaml"
+
+runner:
+  # The 'threaded' runner executes tasks against multiple devices at once.
+  # This is the core advantage of Nornir over plain Netmiko: one command
+  # hits your whole fleet concurrently instead of one device at a time.
+  plugin: threaded
+  options:
+    num_workers: 10   # max devices to talk to simultaneously

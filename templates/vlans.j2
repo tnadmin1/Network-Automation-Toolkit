@@ -1,0 +1,13 @@
+{# ============================================================
+   templates/vlans.j2 — render VLAN definitions into Cisco IOS config
+   ============================================================
+   Loops over the VLAN list from configs/vlans.yaml and emits standard
+   IOS VLAN commands. The template is the vendor-specific layer: to add
+   Juniper support in Phase 6, create a parallel vlans_junos.j2 that
+   renders the SAME data in JunOS syntax. The data never changes — only
+   the template does. That is the core of multi-vendor automation.
+   ============================================================ #}
+{% for vlan in vlans %}
+vlan {{ vlan.id }}
+ name {{ vlan.name }}
+{% endfor %}

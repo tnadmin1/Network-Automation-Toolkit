@@ -1,0 +1,12 @@
+# ============================================================
+# inventory/defaults.yaml — global defaults
+# ============================================================
+# Values here apply to EVERY host unless a group or host overrides them.
+#
+# username and password are intentionally left blank. They are filled in
+# at runtime from your .env file by scripts/nornir_init.py. This keeps
+# secrets out of version control while still giving every host a default.
+# ============================================================
+
+username: ""
+password: ""

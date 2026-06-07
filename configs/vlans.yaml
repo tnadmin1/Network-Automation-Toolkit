@@ -1,0 +1,19 @@
+# ============================================================
+# configs/vlans.yaml — desired VLAN state (single source of truth)
+# ============================================================
+# This is the ONE place VLANs are defined. Edit here, push everywhere.
+#
+# Because it's plain YAML, it is human-readable, diffable, and version-
+# controlled in git — unlike a binary vlan.dat. A VLAN change becomes a
+# reviewable pull request instead of an opaque binary file copy.
+# ============================================================
+
+vlans:
+  - id: 10
+    name: SALES
+  - id: 20
+    name: ENGINEERING
+  - id: 30
+    name: GUEST
+  - id: 99
+    name: MGMT

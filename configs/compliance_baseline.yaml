@@ -1,0 +1,50 @@
+# ============================================================
+# configs/compliance_baseline.yaml — per-platform compliance baseline
+# ============================================================
+# Each platform has a list of rules. A rule is:
+#   name:    human-readable description (shown in the report)
+#   type:    'present' -> the pattern MUST appear in the config to PASS
+#            'absent'  -> the pattern must NOT appear in the config to PASS
+#   pattern: text to search for (case-insensitive substring match)
+#
+# A FAIL means the device does not meet the baseline — a finding to remediate,
+# not a script error. Tune these rules to match your organization's standard
+# (e.g. a DISA STIG, CIS benchmark, or internal hardening policy).
+# ============================================================
+
+cisco_ios:
+  - name: "Password encryption enabled"
+    type: present
+    pattern: "service password-encryption"
+  - name: "NTP server configured"
+    type: present
+    pattern: "ntp server"
+  - name: "Login banner present"
+    type: present
+    pattern: "banner"
+  - name: "Logging configured"
+    type: present
+    pattern: "logging"
+  - name: "Telnet disabled on VTY lines"
+    type: absent
+    pattern: "transport input telnet"
+  - name: "HTTP server disabled"
+    type: present
+    pattern: "no ip http server"
+
+juniper_junos:
+  - name: "NTP server configured"
+    type: present
+    pattern: "set system ntp server"
+  - name: "SSH service enabled"
+    type: present
+    pattern: "set system services ssh"
+  - name: "Root authentication set"
+    type: present
+    pattern: "set system root-authentication"
+  - name: "Telnet service disabled"
+    type: absent
+    pattern: "set system services telnet"
+  - name: "Syslog configured"
+    type: present
+    pattern: "set system syslog"

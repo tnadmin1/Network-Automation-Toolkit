@@ -1,0 +1,21 @@
+# ============================================================
+# inventory/groups.yaml — group definitions
+# ============================================================
+# Groups hold settings shared by many hosts. A host that lists a group
+# in its 'groups:' key inherits everything defined here. This avoids
+# repeating the same platform/vendor data on every single host.
+# ============================================================
+
+cisco_ios:
+  platform: cisco_ios
+  data:
+    vendor: cisco
+    os_family: ios-xe
+
+# Placeholder for Phase 6 (multi-vendor support). Not used yet, but
+# documenting it now shows the architecture is designed for expansion.
+juniper_junos:
+  platform: juniper_junos
+  data:
+    vendor: juniper
+    os_family: junos

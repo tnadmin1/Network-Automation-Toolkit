@@ -1,0 +1,43 @@
+# ============================================================
+# inventory/hosts.yaml — device inventory
+# ============================================================
+# One entry per network device. This is your source of truth for
+# WHAT devices exist and HOW to reach them.
+#
+# IMPORTANT: credentials (username/password) are NOT stored here.
+# They are injected at runtime from your .env file by nornir_init.py.
+# Never put passwords in a file that gets committed to git.
+# ============================================================
+
+# --- Sample device -------------------------------------------
+# Replace 'hostname' with the IP or FQDN of YOUR test device
+# (your DevNet sandbox or your GNS3/CML lab device).
+c5915-rtr:
+  hostname: "192.168.8.181"
+  platform: cisco_ios          # netmiko device_type; cisco_ios works for IOS and IOS-XE
+  port: 22
+  groups:
+    - cisco_ios
+  data:
+    site: lab
+    role: router
+
+c2020-sw:
+  hostname: "10.10.222.2"
+  platform: cisco_ios
+  port: 22
+  groups:
+    - cisco_ios
+  data:
+    site: lab
+    role: switch
+
+# --- Add more devices below as your lab grows ----------------
+# core-sw-01:
+#   hostname: "10.10.20.50"
+#   platform: cisco_ios
+#   groups:
+#     - cisco_ios
+#   data:
+#     site: lab
+#     role: switch
